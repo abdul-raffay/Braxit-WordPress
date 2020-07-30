@@ -1,5 +1,9 @@
 <?php 
 
+    // Customizer
+    require( get_template_directory() . '/inc/customizer.php' );
+
+
     // CSS, JS, and Fonts Files
     function braxit_files(){
         // CSS Files
@@ -56,11 +60,6 @@
             // Jquery Plugins, main Jquery
         wp_enqueue_script('plugins-script', get_theme_file_uri('js/plugins.js'), '', '1.0', true);
         wp_enqueue_script('main-script', get_theme_file_uri('js/main.js'), '', '1.0', true);
-        
-        
-        
-        
-        
         
     }
     add_action('wp_enqueue_scripts', 'braxit_files');

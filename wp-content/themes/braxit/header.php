@@ -66,7 +66,18 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/img/logo/logo.png" alt=""></a>
+                                    <a href="<?php echo site_url(); ?>">
+                                        <?php
+                                            if (function_exists( 'the_custom_logo' )) {
+                                                the_custom_logo();
+                                            }
+                                            else{
+                                                ?>
+                                                <img src="<?php echo get_template_directory_uri(); ?>/img/logo/logo.png" alt="My Custom Logo">
+                                                <?php
+                                            }
+                                        ?>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-8">
