@@ -43,7 +43,7 @@
             // Progress
         wp_enqueue_script('barfiller-script', get_theme_file_uri('js/jquery.barfiller.js'), '', '1.0', true);
             // counter , waypoint,Hover Direction
-        wp_enqueue_script('counterup-script', get_theme_file_uri('js/jquery.counterup.js'), '', '1.0', true);
+        wp_enqueue_script('counterup-script', get_theme_file_uri('js/jquery.counterup.min.js'), '', '1.0', true);
         wp_enqueue_script('waypoints-script', get_theme_file_uri('js/waypoints.min.js'), '', '1.0', true);
         wp_enqueue_script('countdown-script', get_theme_file_uri('js/jquery.countdown.min.js'), '', '1.0', true);
         wp_enqueue_script('hover-direction-script', get_theme_file_uri('js/hover-direction-snake.min.js'), '', '1.0', true);

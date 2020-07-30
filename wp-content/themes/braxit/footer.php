@@ -76,7 +76,7 @@
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-xl-9 col-lg-8">
                             <div class="footer-copy-right">
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 <p>Copyright ©2020 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i>  by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
                             </div>
                         </div>

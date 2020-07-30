@@ -33,7 +33,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/logo/loader.png" alt="">
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/img/logo/logo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-8">
