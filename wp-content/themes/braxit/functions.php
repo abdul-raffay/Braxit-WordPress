@@ -64,4 +64,24 @@
     }
     add_action('wp_enqueue_scripts', 'braxit_files');
 
+
+    // function top_customizer_register($wp_customize){
+    //     // $wp_customize->add_section('top_bar', array(
+    //     //     'title'    => _e("Top Bar", 'braxit'),
+    //     //     "priority" => 105,
+    //     // ));
+
+    //     // $wp_customize->add_setting('phnum', array(
+    //     //     'default'   => _e(' +880 278 367 367', 'braxit'),
+    //     //     "transport" => 'refresh',
+    //     // ));
+
+    //     // $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'theme_customization', array(
+    //     //     'label'    => _e('Change Top Bar', 'braxit'),
+    //     //     "section"  => 'top_bar',
+    //     //     'settings' => 'phnum',
+    //     // )));
+    // }
+    // add_action('customize_register', 'top_customizer_register');
+
 ?>
