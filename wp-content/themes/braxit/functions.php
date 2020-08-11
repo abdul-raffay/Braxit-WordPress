@@ -74,6 +74,8 @@
     // Navigation Menu
     function custom_main_menu() {
         register_nav_menu('custom_menu', __('Main Menu'));
+        register_nav_menu('footer_one_menu', __('Footer 1 Menu'));
+        register_nav_menu('footer_two_menu', __('Footer 2 Menu'));
     }
     add_action('init', 'custom_main_menu');
 

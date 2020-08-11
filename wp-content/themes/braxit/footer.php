@@ -6,19 +6,37 @@
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Company</h4>
-                                <ul>
-                                    <li><a href="#">Why choose us</a></li>
-                                    <li><a href="#"> Review</a></li>
-                                    <li><a href="#">Customers</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Carrier</a></li>
-                                </ul>
+                                <?php 
+                                    $first_menu = wp_get_nav_menu_name('footer_one_menu');
+                                ?>
+                                <h4><?php echo $first_menu; ?></h4>
+                                <?php 
+                                    wp_nav_menu(array(
+                                        'theme_location'  => 'footer_one_menu',
+                                        'container' => "ul",
+                                    ));
+                                ?>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Production -->
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <?php 
+                                    $second_menu = wp_get_nav_menu_name('footer_two_menu');
+                                ?>
+                                <h4><?php echo $second_menu; ?></h4>
+                                <?php 
+                                    wp_nav_menu(array(
+                                        'theme_location'  => 'footer_two_menu',
+                                        'container' => "ul",
+                                    ));
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
                                 <h4>Production</h4>
                                 <ul>
@@ -28,7 +46,7 @@
                                     <li><a href="#">Sales geography</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Contact Us -->
                     <!-- Newsletter -->
