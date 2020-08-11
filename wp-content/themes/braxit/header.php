@@ -50,8 +50,8 @@
                                 <div class="header-info-left">
                                     <ul>     
                                         <!-- <li><i class="fas fa-phone"></i> +880 278 367 367</li> -->
-                                        <li><i class="fas fa-phone"></i> <?php get_theme_mod('phnum'); ?></li>
-                                        <li><i class="far fa-envelope"></i>brexitsupport@gmail.com</li>
+                                        <li><i class="fas fa-phone"></i> <?php echo get_theme_mod('phnum'); ?></li>
+                                        <li><i class="far fa-envelope"></i> <?php echo get_theme_mod('email_contact'); ?></li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
