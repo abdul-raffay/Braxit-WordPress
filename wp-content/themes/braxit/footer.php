@@ -77,7 +77,7 @@
                         <div class="col-xl-9 col-lg-8">
                             <div class="footer-copy-right">
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                <p>Copyright ©2020 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i>  by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
+                                <p><?php echo get_theme_mod('footer_copyright'); ?> <i class="<?php echo get_theme_mod('font_icon'); ?>" aria-hidden="true"></i>  by <a href="<?php echo get_theme_mod('made_by_link'); ?>" target="_blank"><?php echo get_theme_mod('made_by'); ?></a></p>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4">

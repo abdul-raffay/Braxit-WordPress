@@ -98,4 +98,63 @@
         ));
     }
     add_action('customize_register', 'top_customize_register');
+
+
+    // Footer Section
+    function footer_customize_register( $wp_customize ) {
+        $wp_customize->add_section('footer_section', array(
+            'title'    => 'Footer Section',
+            'priority' => 100,
+        ));
+
+        $wp_customize->add_setting('footer_copyright', array(
+            'default'    => 'Copyright ©2020 All rights reserved | This template is made with  by',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('footer_text', array(
+            'label'    => 'Footer Text',
+            'section'  => 'footer_section',
+            'settings' => 'footer_copyright',
+            'type'     => 'text'
+        )); 
+
+        $wp_customize->add_setting('made_by', array(
+            'default'    => 'Colorlib',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('author', array(
+            'label'    => 'Made by',
+            'section'  => 'footer_section',
+            'settings' => 'made_by',
+            'type'     => 'text'
+        )); 
+
+        $wp_customize->add_setting('font_icon', array(
+            'default'    => 'fa fa-heart',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('font_awesome_icon', array(
+            'label'    => 'Font Awesome Icon Class',
+            'section'  => 'footer_section',
+            'settings' => 'font_icon',
+            'type'     => 'text'
+        )); 
+
+        $wp_customize->add_setting('made_by_link', array(
+            'default'    => 'https://colorlib.com/',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('author_link', array(
+            'label'    => 'Author Link',
+            'section'  => 'footer_section',
+            'settings' => 'made_by_link',
+            'type'     => 'url'
+        )); 
+
+    }
+    add_action('customize_register', 'footer_customize_register');
     
