@@ -49,7 +49,7 @@ class Contact_Us_Widget extends WP_Widget {
         
         ?>
         
-        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
             <div class="single-footer-caption mb-50">
                 <div class="footer-tittle">
                     <h4><?php echo $instance['title']; ?></h4>
