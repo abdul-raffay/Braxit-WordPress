@@ -54,9 +54,16 @@
                                         <li><i class="far fa-envelope"></i> <?php echo get_theme_mod('email_contact'); ?></li>
                                     </ul>
                                 </div>
-                                <div class="header-info-right">
-                                    <a href="#" class="btn">Free Quote <i class="ti-arrow-right"></i></a>
-                                </div>
+                                <?php 
+                                    if(get_theme_mod('show_page')){
+                                        $selectedPage = get_theme_mod('page_show');
+                                ?>
+                                    <div class="header-info-right">
+                                        <a href="<?php echo get_permalink($selectedPage); ?>" class="btn"><?php echo get_theme_mod('page_text'); ?> <i class="ti-arrow-right"></i></a>
+                                    </div>
+                                <?php 
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

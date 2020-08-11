@@ -43,8 +43,59 @@
             'label'    => 'Email',
             'section'  => 'top_bar_section',
             'settings' => 'email_contact',
-            'type'     => 'email'
+            'type'     => 'email',
         )); 
+
+        $wp_customize->add_setting('show_page', array(
+            'default'    => false,
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('enable_button', array(
+            'label'    => 'Show Button',
+            'section'  => 'top_bar_section',
+            'settings' => 'show_page',
+            'type'     => 'checkbox',
+        ));
+
+        // Pages
+        $all_pages = get_pages();
+        $getPage = array();
+
+        foreach($all_pages as $page){
+            $getPage[$page->ID] = $page->post_title;
+        }
+
+        $wp_customize->add_setting('page_show', array(
+            'default'    => 'none',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('page_dropdown', array(
+            'label'           => 'Button Page Redirect Link',
+            'section'         => 'top_bar_section',
+            'settings'        => 'page_show',
+            'type'            => 'select',
+            'choices' => $getPage,
+            'active_callback' => function ($control){
+                return $control->manager->get_setting('show_page')->value();
+            },
+        ));
+
+        $wp_customize->add_setting('page_text', array(
+            'default'    => 'Free Quote',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('text_dropdown', array(
+            'label'           => 'Button Page Redirect Text',
+            'section'         => 'top_bar_section',
+            'settings'        => 'page_text',
+            'type'            => 'text',
+            'active_callback' => function ($control){
+                return $control->manager->get_setting('show_page')->value();
+            },
+        ));
     }
     add_action('customize_register', 'top_customize_register');
     
