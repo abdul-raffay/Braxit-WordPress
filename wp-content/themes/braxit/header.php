@@ -92,8 +92,15 @@
                                 <div class="menu-wrapper  d-flex align-items-center">
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
-                                        <nav> 
-                                            <ul id="navigation">                                                                                          
+                                            <!-- Menu -->
+                                            <?php 
+                                                wp_nav_menu(array(
+                                                    'theme_location' => 'custom_menu',
+                                                    'container'      => 'nav',
+                                                    'menu_id' => 'navigation',
+                                                ));
+                                            ?>
+                                            <!-- <ul id="navigation">                                                                                          
                                                 <li class="active"><a href="index.html">Home</a></li>
                                                 <li><a href="about.html">About</a></li>
                                                 <li><a href="services.html">Services</a></li>
@@ -113,8 +120,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
-                                            </ul>
-                                        </nav>
+                                            </ul> -->
                                     </div>
                                 </div>
                             </div> 

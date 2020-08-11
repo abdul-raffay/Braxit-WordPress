@@ -1,3 +1,15 @@
 body.admin-bar .header-area .header-sticky.sticky-bar {
     margin-top: 32px;
 }
+
+.current_page_item::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #f04e3c;
+    bottom: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
