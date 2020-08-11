@@ -1,5 +1,11 @@
 <?php 
 
+    // Exit if Access through URL
+    if(!defined('ABSPATH')){
+        die();
+        exit();
+    }
+
     // Customizer
     require( get_template_directory() . '/inc/customizer.php' );
 
@@ -70,5 +76,19 @@
         register_nav_menu('custom_menu', __('Main Menu'));
     }
     add_action('init', 'custom_main_menu');
+
+
+    // Widget
+    function register_theme_widget() {
+        require_once('inc/classes/class-newsletter.php');
+        require_once('inc/classes/class-contactus.php');
+        register_sidebar(array(
+            'name' => 'My Widget Area',
+            'id' => 'widget_area',
+        ));
+        register_widget('Newsletter_Widget');
+        register_widget('Contact_Us_Widget');
+    }
+    add_action('widgets_init', 'register_theme_widget');
 
 ?>
