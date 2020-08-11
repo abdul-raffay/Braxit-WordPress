@@ -82,12 +82,34 @@
                         </div>
                         <div class="col-xl-3 col-lg-4">
                             <!-- Footer Social -->
-                            <div class="footer-social f-right">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fas fa-globe"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
+                            <?php if(get_theme_mod('show_social_accounts')) { ?>
+                                <div class="footer-social f-right">
+                                    <?php if(get_theme_mod('twitter_footer_url')){
+                                        ?>
+                                        <a href="<?php echo get_theme_mod('twitter_footer_url'); ?>"><i class="fab fa-twitter"></i></a>
+                                        <?php
+                                    } 
+                                    ?>
+                                    <?php if(get_theme_mod('facebook_footer_url')){
+                                        ?>
+                                        <a href="<?php echo get_theme_mod('facebook_footer_url'); ?>"><i class="fab fa-facebook-f"></i></a>
+                                        <?php
+                                    } 
+                                    ?>
+                                    <?php if(get_theme_mod('globe_footer_url')){
+                                        ?>
+                                        <a href="<?php echo get_theme_mod('globe_footer_url'); ?>"><i class="fas fa-globe"></i></a>
+                                        <?php
+                                    } 
+                                    ?>
+                                    <?php if(get_theme_mod('insta_footer_url')){
+                                        ?>
+                                        <a href="<?php echo get_theme_mod('insta_footer_url'); ?>"><i class="fab fa-instagram"></i></a>
+                                        <?php
+                                    } 
+                                    ?>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

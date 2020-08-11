@@ -155,6 +155,78 @@
             'type'     => 'url'
         )); 
 
+        $wp_customize->add_setting('show_social_accounts', array(
+            'default'    => false,
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('enable_social', array(
+            'label'    => 'Show Social Media Icons',
+            'section'  => 'footer_section',
+            'settings' => 'show_social_accounts',
+            'type'     => 'checkbox',
+        ));
+
+        $wp_customize->add_setting('twitter_footer_url', array(
+            'default' => '#',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('twitter_url', array(
+            'label'    => "Twitter URL (leave it blank to don't show)",
+            'section'  => 'footer_section',
+            'settings' => 'twitter_footer_url',
+            'type'     => 'url',
+            'active_callback' => function ($control){
+                return $control->manager->get_setting('show_social_accounts')->value();
+            },
+        ));
+
+        $wp_customize->add_setting('facebook_footer_url', array(
+            'default' => '#',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('facebook_url', array(
+            'label'    => "Facebook URL (leave it blank to don't show)",
+            'section'  => 'footer_section',
+            'settings' => 'facebook_footer_url',
+            'type'     => 'url',
+            'active_callback' => function ($control){
+                return $control->manager->get_setting('show_social_accounts')->value();
+            },
+        ));
+
+        $wp_customize->add_setting('globe_footer_url', array(
+            'default' => '#',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('globe_url', array(
+            'label'    => "Page URL (leave it blank to don't show)",
+            'section'  => 'footer_section',
+            'settings' => 'globe_footer_url',
+            'type'     => 'url',
+            'active_callback' => function ($control){
+                return $control->manager->get_setting('show_social_accounts')->value();
+            },
+        ));
+
+        $wp_customize->add_setting('insta_footer_url', array(
+            'default' => '#',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('insta_url', array(
+            'label'    => "Instagram URL (leave it blank to don't show)",
+            'section'  => 'footer_section',
+            'settings' => 'insta_footer_url',
+            'type'     => 'url',
+            'active_callback' => function ($control){
+                return $control->manager->get_setting('show_social_accounts')->value();
+            },
+        ));
+
     }
     add_action('customize_register', 'footer_customize_register');
     
