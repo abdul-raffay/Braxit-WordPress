@@ -11,6 +11,7 @@
         )
     );
 
+
     // Top Section
     function top_customize_register( $wp_customize ) {
 
@@ -229,4 +230,81 @@
 
     }
     add_action('customize_register', 'footer_customize_register');
+
+    
+    // Main Section
+    function main_customize_register ( $wp_customize ) {
+        $wp_customize->add_section('main_section', array(
+            'title'    => 'Main Section',
+            'priority' => 5,
+        ));
+
+        $wp_customize->add_setting('first_text', array(
+            'default'    => 'Market leading Manufacturer',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('text_one', array(
+            'label'    => 'Text One',
+            'section'  => 'main_section',
+            'settings' => 'first_text',
+            'type'     => 'text',
+        ));
+
+        $wp_customize->add_setting('second_text', array(
+            'default'    => 'The right candidate may exist, but talented people',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('text_two', array(
+            'label'    => 'Text Two',
+            'section'  => 'main_section',
+            'settings' => 'second_text',
+            'type'     => 'text',
+        ));
+
+        // Pages
+        $all_pages = get_pages();
+        $getPage = array();
+
+        foreach($all_pages as $page){
+            $getPage[$page->ID] = $page->post_title;
+        }
+
+        $wp_customize->add_setting('main_banner_link', array(
+            'default'    => '#',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('page_main_link', array(
+            'label'           => 'Button Page Redirect Link',
+            'section'         => 'main_section',
+            'settings'        => 'main_banner_link',
+            'type'            => 'select',
+            'choices' => $getPage,
+        ));
+
+        $wp_customize->add_setting('youtube_video', array(
+            'default'    => 'https://www.youtube.com/watch?v=up68UAfH0d0',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('youtube_link', array(
+            'label'    => 'Youtube Video Link',
+            'section'  => 'main_section',
+            'settings' => 'youtube_video',
+            'type'     => 'url',
+        ));
+
+        $wp_customize->add_setting('banner_image', array(
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'banner', array(
+            'label'    => __('Upload a Banner', 'textdomain'),
+            'section'  => 'main_section',
+            'settings' => 'banner_image',
+        )));
+    }
+    add_action( 'customize_register', 'main_customize_register' );
     
