@@ -26,6 +26,22 @@ add_action( 'init', 'gallery_post_type' );
 
 // Link to the page customizer
 function gallery_customize_register( $wp_customize ) {
-    $wp_customize->add_section( 'gallery_section', array() );
+    $wp_customize->add_section( 'gallery_section', array(
+        'title'    => 'Gallery Section',
+        'priority' => 11,
+    ) );
+
+    // Number of Post
+    $wp_customize->add_setting('gallery_post', array(
+        'default'    => 3,
+        'capability' => 'edit_theme_options',
+    ));
+
+    $wp_customize->add_control('num_post', array(
+        'label'    => 'Number of Post to show',
+        'section'  => 'gallery_section',
+        'settings' => 'gallery_post',
+        'type'     => 'number',
+    ));
 }
 add_action( 'customize_register', 'gallery_customize_register' );
