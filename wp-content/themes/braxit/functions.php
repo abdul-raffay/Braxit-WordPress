@@ -28,6 +28,7 @@
         wp_enqueue_style('slick-style', get_theme_file_uri('css/slick.css'));
         wp_enqueue_style('nice-style', get_theme_file_uri('css/nice-select.css'));
         wp_enqueue_style('style-style', get_theme_file_uri('css/style.css'));
+        // wp_enqueue_style('style-map', get_theme_file_uri('css/style.map'));
 
         // JS Files
         wp_enqueue_script('script-script', get_theme_file_uri('js/script.js'), '', '1.0', true);

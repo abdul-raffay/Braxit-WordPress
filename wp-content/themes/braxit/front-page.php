@@ -97,7 +97,49 @@
         <div class="gallery-area">
             <div class="container-fluid p-0 fix">
                 <div class="row no-gutters">
-                    <div class="col-xl-4 col-lg-4 col-md-6">
+                    <?php 
+
+                        $args = array(
+                            'post_type' => 'gallery',
+                            // 'post_status' => 'public' // by default post_status is public
+                            'posts_per_page' => 3,
+                        );
+                        $galleryPost = new WP_Query($args);
+                        if( $galleryPost->have_posts() ) {
+                            while( $galleryPost->have_posts() ) {
+                                $galleryPost->the_post();
+                                ?>
+                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single-gallery text-center">
+                                            <?php 
+                                                if( has_post_thumbnail() ){
+                                                    $featureImage = get_the_post_thumbnail_url();
+                                                    ?>
+                                                    <div class="gallery-img" style="background-image: url(<?php echo $featureImage; ?>);"></div>
+                                                    <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                    <div class="gallery-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gallery/gallery1.png);"></div>
+                                                    <?php
+                                                }
+                                            ?>
+                                            <div class="thumb-content-box">
+                                                <div class="thumb-content">
+                                                    <h3><?php strtoupper(the_title()); ?></h3>
+                                                    <p><?php the_excerpt(); ?></p>
+                                                    <a href="<?php the_permalink(); ?>">Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
+                            wp_reset_postdata();
+                        }
+
+                    ?>
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-gallery text-center">
                             <div class="gallery-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gallery/gallery1.png);"></div>
                             <div class="thumb-content-box">
@@ -108,8 +150,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
+                    </div> -->
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-gallery no-margin text-center">
                             <div class="gallery-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gallery/gallery2.png);"></div>
                             <div class="thumb-content-box">
@@ -120,8 +162,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
+                    </div> -->
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-gallery text-center">
                             <div class="gallery-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gallery/gallery3.png);"></div>
                             <div class="thumb-content-box">
@@ -132,7 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

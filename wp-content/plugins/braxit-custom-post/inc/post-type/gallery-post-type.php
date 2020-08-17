@@ -1,23 +1,33 @@
 <?php
 
+function braxit_theme_support() {
+    add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'braxit_theme_support' );
+
 // Register Post Type
 function gallery_post_type() {
     register_post_type( 'gallery', array(
+        'supports'      => array(
+            'title',
+            'thumbnail',
+            'excerpt'
+        ),
         'public'        => true,
         'label'         => __('Gallery', 'braxit'),
         'show_ui'       => true,   // to show in Admin Menu Bar
         'menu_icon'     => 'dashicons-format-gallery',
         'menu_position' => 50,
-        'capabilities'  => array(
-            'edit_post'     => 'edit_gallery',
-            'read_post'     => 'read_gallery',
-            'delete_post'   => 'delete_gallery',
-        ),
-        'supports'      => array(
-            'title',
-            'editor',
-            'thumbnail',
-        ),
+        // 'capabilities'  => array(
+        //     'edit_post'     => 'edit_gallery',
+        //     'read_post'     => 'read_gallery',
+        //     'delete_post'   => 'delete_gallery',
+        // ),
+        // 'supports'      => array(
+        //     'title',
+        //     'editor',
+        //     'thumbnail',
+        // ),
         'show_in_rest'  => true,   // to show in REST API
     ));
 }
