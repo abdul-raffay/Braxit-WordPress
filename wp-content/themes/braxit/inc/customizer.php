@@ -77,7 +77,7 @@
             'section'         => 'top_bar_section',
             'settings'        => 'page_show',
             'type'            => 'select',
-            'choices' => $getPage,
+            'choices'         => $getPage,
             'active_callback' => function ($control){
                 return $control->manager->get_setting('show_page')->value();
             },
@@ -307,4 +307,64 @@
         )));
     }
     add_action( 'customize_register', 'main_customize_register' );
+
+
+    // Gallery Section
+    function gallery_customize_register( $wp_customize ) {
+        // Section
+        $wp_customize->add_section('gallery_section', array(
+            'title'    => 'Gallery Section',
+            'priority' => 6,
+        ));
+        
+        // Enable/Disable Control
+        $wp_customize->add_setting('show_gallery', array(
+            'default'    => false,
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('enable_gallery', array(
+            'label'    => 'Show Gallery',
+            'section'  => 'gallery_section',
+            'settings' => 'show_gallery',
+            'type'     => 'checkbox',
+        ));
+
+        // Number of Post
+        $wp_customize->add_setting('gallery_post', array(
+            'default'    => 3,
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('num_post', array(
+            'label'       => 'Number of Post to show | (min: 1, max: 6)',
+            'section'     => 'gallery_section',
+            'settings'    => 'gallery_post',
+            'type'        => 'number',
+            'input_attrs' => array(
+                'min' => 1, 
+                'max' => 6,
+                // 'class' => 'example-class',
+                // 'style' => 'color: #ff0022',
+            ),
+        ));
+
+        // Order of Post
+        $wp_customize->add_setting('gallery_order', array(
+            'default'    => 'DESC',
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('gallery_post', array(
+            'label'    => 'Order of Posts Display',
+            'section'  => 'gallery_section',
+            'settings' => 'gallery_order',
+            'type'     => 'select',
+            'choices'  => array(
+                'ASC'  => 'Ascending',
+                'DESC' => 'Descending',
+            ),
+        ));
+    } 
+    add_action( 'customize_register', 'gallery_customize_register' );
     
