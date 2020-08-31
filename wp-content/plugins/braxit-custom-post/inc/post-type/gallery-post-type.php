@@ -1,10 +1,5 @@
 <?php
 
-function braxit_theme_support() {
-    add_theme_support( 'post-thumbnails' );
-}
-add_action( 'after_setup_theme', 'braxit_theme_support' );
-
 // Register Post Type
 function gallery_post_type() {
     register_post_type( 'gallery', array(
@@ -18,6 +13,14 @@ function gallery_post_type() {
         'show_ui'       => true,   // to show in Admin Menu Bar
         'menu_icon'     => 'dashicons-format-gallery',
         'menu_position' => 50,
+        'labels'        => array(
+            'all_items'    => __('Galleries', 'braxit'),
+            'edit_item'    => __('Edit Gallery', 'braxit'),
+            'view_item'    => __('View Gallery', 'braxit'),
+            'new_item'     => __('New Gallery', 'braxit'),
+            'add_new'      => __( 'Add New', 'braxit' ),
+            'add_new_item' => __( 'Add New Gallery', 'braxit' ),
+        ),
         // 'capabilities'  => array(
         //     'edit_post'     => 'edit_gallery',
         //     'read_post'     => 'read_gallery',

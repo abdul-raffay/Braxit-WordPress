@@ -241,57 +241,88 @@
         </div>
         <!-- cat End -->
         <!-- Services Area start -->
-        <div class="service-area section-bg" data-background="<?php echo get_template_directory_uri(); ?>/img/gallery/section_bg01.png">
-            <div class="container">
-                <div class="row align-items-end no-gutters">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-main position-relative">
-                            <div class="single-wrapper active">
-                                <div class="single-services ">
-                                    <span>01.</span>
-                                    <h4>Building Yead</h4>
-                                    <p>We collect and analyze information about your general usage of the website to the products services and courses.</p>
+        <?php if(get_theme_mod('show_service')) { 
+            $galleryBG = get_template_directory_uri() . '/img/gallery/section_bg01.png';
+            if(get_theme_mod('gallery_bg')) {
+                $galleryBG = get_theme_mod('gallery_bg');
+            } ?>
+            <div class="service-area section-bg" data-background="<?php echo $galleryBG; ?>">
+                <div class="container">
+                    <div class="row align-items-end no-gutters">
+                        <?php
+                            $args = array(
+                                'post_type'      => 'service',
+                                'posts_per_page' => 3,
+                                'order'          => 'ASC',
+                            );
+                            $servicePost = new WP_Query($args);
+                            $i = 1;
+                            if($servicePost->have_posts()) {
+                                while($servicePost->have_posts()) {
+                                    $servicePost->the_post();
+                                    ?>
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="single-main position-relative">
+                                            <div class="single-wrapper <?php if($i != 1) { echo 'hide'; } ?>">
+                                                <div class="single-services ">
+                                                    <span>0<?php echo $i; ?>.</span>
+                                                    <h4><?php the_title(); ?></h4>
+                                                    <p><?php the_excerpt(); ?></p>
+                                                </div>
+                                                <div class="services-btn">
+                                                    <a href="<?php echo esc_url(get_the_permalink()); ?>">View More</a>
+                                                </div>
+                                            </div>
+                                            <?php 
+                                                if($i != 1) {
+                                                    ?>
+                                                    <span class="transparrent-btn position-absolute">0<?php echo $i; ?>. <?php the_title(); ?></span>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    $i++;
+                                }
+                                unset($i);
+                                wp_reset_postdata();
+                            }
+                        ?>
+                        <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="single-main position-relative ">
+                                <div class="single-wrapper hide">
+                                    <div class="single-services ">
+                                        <span>02.</span>
+                                        <h4>Meghna Bridge</h4>
+                                        <p>We collect and analyze information about your general usage of the website to the products services and courses.</p>
+                                    </div>
+                                    <div class="services-btn">
+                                        <a href="project.html">View More</a>
+                                    </div>
                                 </div>
-                                <div class="services-btn">
-                                    <a href="project.html">View More</a>
-                                </div>
+                                <span class="transparrent-btn position-absolute">02. Meghna Bridge</span>
                             </div>
-                            <span class="transparrent-btn active position-absolute">02. Meghna Bridge</span>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-main position-relative ">
-                            <div class="single-wrapper hide">
-                                <div class="single-services ">
-                                    <span>02.</span>
-                                    <h4>Meghna Bridge</h4>
-                                    <p>We collect and analyze information about your general usage of the website to the products services and courses.</p>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="single-main position-relative">
+                                <div class="single-wrapper hide">
+                                    <div class="single-services ">
+                                        <span>03.</span>
+                                        <h4>Kalis Vadru</h4>
+                                        <p>We collect and analyze information about your general usage of the website to the products services and courses.</p>
+                                    </div>
+                                    <div class="services-btn">
+                                        <a href="project.html">View More</a>
+                                    </div>
                                 </div>
-                                <div class="services-btn">
-                                    <a href="project.html">View More</a>
-                                </div>
+                                <span class="transparrent-btn position-absolute">03. Kalis Vadru</span>
                             </div>
-                            <span class="transparrent-btn position-absolute">02. Meghna Bridge</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-main position-relative">
-                            <div class="single-wrapper hide">
-                                <div class="single-services ">
-                                    <span>03.</span>
-                                    <h4>Kalis Vadru</h4>
-                                    <p>We collect and analyze information about your general usage of the website to the products services and courses.</p>
-                                </div>
-                                <div class="services-btn">
-                                    <a href="project.html">View More</a>
-                                </div>
-                            </div>
-                            <span class="transparrent-btn position-absolute">03. Kalis Vadru</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
         <!-- Services Area End -->
         <!-- Want To work -->
         <section class="wantToWork-area gray-bg ">
@@ -367,72 +398,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <!-- galary -->
-                        <div class="single-gallery">
-                            <div class="gallery-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/gallery/gallery2.png);"></div>
-                            <div class="thumb-content-box">
-                                <div class="thumb-content">
-                                    <h3><a href="#">Need to make<br> an enquiry?</a></h3>
-                                    <p>We collect and analyze information about your general usage of the website products.</p>
-                                    <a href="services.html">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <!-- contact-form -->
-                        <div class="form-wrapper">
-                            <div class="row ">
-                                <div class="col-xl-12">
-                                    <div class="section-tittle section-tittle2 mb-30">
-                                        <h2>Drop your message</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <form id="contact-form" action="#" method="POST">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-6">
-                                        <div class="form-box user-icon mb-15">
-                                            <input type="text" name="name" placeholder="Your Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-6">
-                                        <div class="form-box email-icon mb-15">
-                                            <input type="text" name="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-6">
-                                        <div class="form-box email-icon mb-15">
-                                            <input type="text" name="email" placeholder="Phone no.">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-6 mb-15">
-                                        <div class="select-itms">
-                                            <select name="select" id="select2">
-                                                <option value="">Topic</option>
-                                                <option value="">Topic one</option>
-                                                <option value="">Topic Two</option>
-                                                <option value="">Topic Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-box message-icon mb-15">
-                                            <textarea name="message" id="message" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="submit-info">
-                                            <button class="submit-btn2" type="submit">Send Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form> 
-                        </div>
-                    </div>
+                    <!-- Contact Form Widget -->
+                    <?php 
+                        if( is_active_sidebar('contact_form_area') ) {
+                            dynamic_sidebar('contact_form_area');
+                        }
+                    ?>
+                    <!-- Contact form End -->
                 </div>
             </div>
         </div>
-        <!-- Contact form End -->
         <!--? Blog Area Start -->
         <section class="home-blog-area pb-bottom">
             <div class="container">

@@ -367,4 +367,62 @@
         ));
     } 
     add_action( 'customize_register', 'gallery_customize_register' );
+
+
+    // Service Section
+    function services_customize_register( $wp_customize ) {
+        // Section
+        $wp_customize->add_section('service_section', array(
+            'title'    => 'Service Section',
+            'priority' => 7,
+        ));
+
+        // Enable/Disable Control
+        $wp_customize->add_setting('show_service', array(
+            'default'    => false,
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control('enable_service', array(
+            'label'    => 'Show Service',
+            'section'  => 'service_section',
+            'settings' => 'show_service',
+            'type'     => 'checkbox',
+        ));
+
+        // Background Image
+        $wp_customize->add_setting('gallery_bg', array(
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'gallery_bg_img', array(
+            'label'    => __('Upload a Gallery Section Background Image', 'braxit'),
+            'section'  => 'service_section',
+            'settings' => 'gallery_bg',
+        )));
+    }
+    add_action( 'customize_register', 'services_customize_register' );
+
+    // Contact Form
+    function contact_form_customize( $wp_customize ) {
+        // Section
+        $wp_customize->add_section('contact_form_section', array(
+            'title'    => 'Contact Form Section',
+            'priority' => 8,
+        ));
+
+        // Background Image
+        $wp_customize->add_setting('contact_form_setting', array(
+            'capability' => 'edit_theme_options',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'contact_form_bg_img', array(
+            'label'    => __('Upload a Contact Form Background Background Image', 'braxit'),
+            'section'  => 'contact_form_section',
+            'settings' => 'contact_form_setting',
+        )));
+    }
+    if( is_active_sidebar('contact_form_area') ) {
+        add_action( 'customize_register', 'contact_form_customize' );
+    }
     

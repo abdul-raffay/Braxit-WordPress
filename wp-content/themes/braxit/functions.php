@@ -85,13 +85,26 @@
     function register_theme_widget() {
         require_once('inc/classes/class-newsletter.php');
         require_once('inc/classes/class-contactus.php');
+        require_once('inc/classes/class-contactform.php');
         register_sidebar(array(
             'name' => 'My Widget Area',
             'id' => 'widget_area',
         ));
+        register_sidebar(array(
+            'name' => 'My Contact Form Area',
+            'id' => 'contact_form_area',
+        ));
         register_widget('Newsletter_Widget');
         register_widget('Contact_Us_Widget');
+        register_widget('Contact_Form_Widget');
     }
     add_action('widgets_init', 'register_theme_widget');
+
+    
+    // Theme Support
+    function braxit_theme_support() {
+        add_theme_support( 'post-thumbnails' );
+    }
+    add_action( 'after_setup_theme', 'braxit_theme_support' );
 
 ?>
